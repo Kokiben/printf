@@ -2,6 +2,7 @@
 #define PRINTF_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdarg.h>
 #include <limits.h>
 #include <unistd.h>
@@ -79,11 +80,11 @@ int print_unsigned(va_list ap, params_t *params);
 int print_address(va_list ap, params_t *params);
 
 /* specifier.c module */
-int (*get_specifier(char *s)(va_list ap, params_t *params);
-int get_print(va_list ap, params_t *params);
-int get_flag(va_list ap, params_t *params);
-int get_modifier(va_list ap, params_t *params);
-char *get_width(va_list ap, params_t *params);
+int (*get_specifier(char *s))(va_list ap, params_t *params);
+int get_print_func(char *s, va_list ap, params_t *params);
+int get_flag(char *s, params_t *params);
+int get_modifier(char *s, params_t *params);
+char *get_width(char *s, params_t *params, va_list ap);
 
 /* convert_number.c module */
 int print_hex(va_list ap, params_t *params);
